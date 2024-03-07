@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="547b24f0-7a64-4743-a8ca-05229ceb8d45" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/chu-api.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/codeception.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/commandlinetools/Symfony_5_10_23__8_26_PM.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/phpspec.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/phpunit.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/symfony2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CHU-NEONAT-WEB-BACK/config/packages/security.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerConfigs">
+    <option name="configs">
+      <option value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/composer.json" />
+    </option>
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/BackendTotal/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe">
+    <include_path>
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/lexik/jwt-authentication-bundle" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/composer" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/password-hasher" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/runtime" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/stella-maris/clock" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/api-platform/core" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/CHU-NEONAT-BACK-WEB/vendor/psr/clock" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="2Sid7TsBrJ0Mg7wW4gtyERQXRN1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/DigiNeonat-v2023",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "prettierjs.PrettierConfiguration.Package": "C:\\DigiNeonat-v2023\\CHU-NEONATAL-WEB-FRONT\\node_modules\\prettier",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="547b24f0-7a64-4743-a8ca-05229ceb8d45" name="Changes" comment="" />
+      <created>1689633167929</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689633167929</updated>
+      <workItem from="1689633169086" duration="964000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
