@@ -42,7 +42,7 @@ const MultiStepForm = () => {
     const [alertOpen, setAlertOpen] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
     const [alertSeverity, setAlertSeverity] = useState('success');
-
+    const [selectedAspect, setSelectedAspect] = useState('');
 
     // useEffect(() => {
     //   dispatch(fetchPatients());
@@ -92,6 +92,7 @@ const MultiStepForm = () => {
         histoireDeLaMaladieMere: '',
         poidsNaiss:0.0,
         tailleNaiss:0.0,
+        
         pcNaiss:0.0,
         dateDadmissionDeLaMereAccouchement: null,//
         heureDadmissionDeLaMereAccouchement: null,//
@@ -225,6 +226,17 @@ const MultiStepForm = () => {
             setAlertOpen(true);
             console.log(formValues);
         }
+    };
+    const [selectedOrgan, setSelectedOrgan] = useState('');
+    const [selectedPrader, setSelectedPrader] = useState('');
+
+    const handleOrganChange = (event) => {
+        setSelectedOrgan(event.target.value);
+        setSelectedPrader(''); // Réinitialise la valeur PRADER sélectionnée lors du changement d'organe
+    };
+
+    const handlePraderChange = (event) => {
+        setSelectedPrader(event.target.value);
     };
 
 
@@ -1643,197 +1655,36 @@ const MultiStepForm = () => {
                                         >
                                             Examen de l'admission
                                         </h5>
-
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                            <TextField
-                                                type="number"
-                                                label="P etat general  "
-                                                variant="outlined"
-                                                margin="normal"
-                                                style={{ marginLeft: '10px', marginRight: '10px' }}
-                                                fullWidth
-                                                value={formValues.pEtatGeneral !== null ? formValues.pEtatGeneral : ''}
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setFormValues({ ...formValues, pEtatGeneral: newValue !== '' ? parseFloat(newValue) : null });
-                                                }}
-                                                onBlur={() => {
-                                                    const floatValue = parseFloat(formValues.pEtatGeneral);
-                                                    if (isNaN(floatValue)) {
-                                                        setFormValues({ ...formValues, pEtatGeneral: 0.0 });
-                                                    } else {
-                                                        setFormValues({ ...formValues, pEtatGeneral: floatValue });
-                                                    }
-                                                }}
-                                            />
-
-
-                                            <TextField
-                                                type="number"
-                                                label="t etat general "
-                                                variant="outlined"
-                                                margin="normal"
-                                                style={{ marginLeft: '10px', marginRight: '10px' }}
-                                                fullWidth
-                                                value={formValues.tEtatGeneral !== null ? formValues.tEtatGeneral : ''}
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setFormValues({ ...formValues, tEtatGeneral: newValue !== '' ? parseFloat(newValue) : null });
-                                                }}
-                                                onBlur={() => {
-                                                    const floatValue = parseFloat(formValues.tEtatGeneral);
-                                                    if (isNaN(floatValue)) {
-                                                        setFormValues({ ...formValues, tEtatGeneral: 0.0 });
-                                                    } else {
-                                                        setFormValues({ ...formValues, tEtatGeneral: floatValue });
-                                                    }
-                                                }}
-                                            />
-
-
-                                            <TextField
-                                                type="number"
-                                                label="Pc etat ganeral "
-                                                variant="outlined"
-                                                margin="normal"
-                                                style={{ marginLeft: '10px', marginRight: '10px' }}
-                                                fullWidth
-                                                value={formValues.pcEtatGeneral !== null ? formValues.pcEtatGeneral : ''}
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setFormValues({ ...formValues, pcEtatGeneral: newValue !== '' ? parseFloat(newValue) : null });
-                                                }}
-                                                onBlur={() => {
-                                                    const floatValue = parseFloat(formValues.pcEtatGeneral);
-                                                    if (isNaN(floatValue)) {
-                                                        setFormValues({ ...formValues, pcEtatGeneral: 0.0 });
-                                                    } else {
-                                                        setFormValues({ ...formValues, pcEtatGeneral: floatValue });
-                                                    }
-                                                }}
-                                            />
-
-
+                                        
+                                        <div style={{ marginLeft: '10px' }}>
+                                         
+                                            <FormControl component="fieldset">
+                                                <FormLabel component="legend">Aspect</FormLabel>
+                                                <InputLabel id="aspects-label" style={{ marginBottom: '5px' }}>Choisir un aspect</InputLabel>
+                                                <Select 
+                                                     
+                                                     labelId="aspects-label"
+                                                     id="aspects"
+                                                     values={selectedAspect}
+                                                     onChange={(event) => setSelectedAspect(event.target.value)}
+                                                     displayEmpty
+                                                     style={{ minWidth: '150px' }}
+                                                >
+                                                    
+                                                    <MenuItem value="" disabled>Choisir un aspect</MenuItem>
+                                                    <MenuItem value="Rose">Rose</MenuItem>
+                                                    <MenuItem value="Cyanose">Cyanosé</MenuItem>
+                                                    <MenuItem value="Ictere">Pâle</MenuItem>
+                                                    <MenuItem value="Paleur">Ictérique</MenuItem>
+                                                    <MenuItem value="Paleur">Marbré</MenuItem>
+                                                    <MenuItem value="Paleur">septique</MenuItem>
+                                                </Select>
+                                            </FormControl>
                                         </div>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                            <TextField
-                                                type="number"
-                                                label="Trc Etat General"
-                                                variant="outlined"
-                                                margin="normal"
-                                                style={{ marginLeft: '10px', marginRight: '10px' }}
-                                                fullWidth
-                                                value={formValues.trcEtatGeneral !== null ? formValues.trcEtatGeneral : ''}
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setFormValues({ ...formValues, trcEtatGeneral: newValue !== '' ? parseFloat(newValue) : null });
-                                                }}
-                                                onBlur={() => {
-                                                    const floatValue = parseFloat(formValues.trcEtatGeneral);
-                                                    if (isNaN(floatValue)) {
-                                                        setFormValues({ ...formValues, trcEtatGeneral: 0.0 });
-                                                    } else {
-                                                        setFormValues({ ...formValues, trcEtatGeneral: floatValue });
-                                                    }
-                                                }}
-                                            />
-
-                                            <TextField
-                                                type="number"
-                                                label="Ta Etat General"
-                                                variant="outlined"
-                                                margin="normal"
-                                                style={{ marginLeft: '10px', marginRight: '10px' }}
-                                                fullWidth
-                                                value={formValues.taEtatGeneral !== null ? formValues.taEtatGeneral : ''}
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setFormValues({ ...formValues, taEtatGeneral: newValue !== '' ? parseFloat(newValue) : null });
-                                                }}
-                                                onBlur={() => {
-                                                    const floatValue = parseFloat(formValues.taEtatGeneral);
-                                                    if (isNaN(floatValue)) {
-                                                        setFormValues({ ...formValues, taEtatGeneral: 0.0 });
-                                                    } else {
-                                                        setFormValues({ ...formValues, taEtatGeneral: floatValue });
-                                                    }
-                                                }}
-                                            />
-
-                                            <TextField
-                                                type="number"
-                                                label="Sa2"
-                                                variant="outlined"
-                                                margin="normal"
-                                                style={{ marginLeft: '10px', marginRight: '10px' }}
-                                                fullWidth
-                                                value={formValues.sa2 !== null ? formValues.sa2 : ''}
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setFormValues({ ...formValues, sa2: newValue !== '' ? parseFloat(newValue) : null });
-                                                }}
-                                                onBlur={() => {
-                                                    const floatValue = parseFloat(formValues.sa2);
-                                                    if (isNaN(floatValue)) {
-                                                        setFormValues({ ...formValues, sa2: 0.0 });
-                                                    } else {
-                                                        setFormValues({ ...formValues, sa2: floatValue });
-                                                    }
-                                                }}
-                                            />
-
-
-                                        </div>
                                         <TextField
-                                            type="number"
-                                            label="Dextro"
-                                            variant="outlined"
-                                            margin="normal"
-                                            style={{ marginLeft: '10px', marginRight: '10px' }}
-                                            fullWidth
-                                            value={formValues.dextro !== null ? formValues.dextro : ''}
-                                            onChange={(e) => {
-                                                const newValue = e.target.value;
-                                                setFormValues({ ...formValues, dextro: newValue !== '' ? parseFloat(newValue) : null });
-                                            }}
-                                            onBlur={() => {
-                                                const floatValue = parseFloat(formValues.dextro);
-                                                if (isNaN(floatValue)) {
-                                                    setFormValues({ ...formValues, dextro: 0.0 });
-                                                } else {
-                                                    setFormValues({ ...formValues, dextro: floatValue });
-                                                }
-                                            }}
-                                        />
-
-
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                            <TextField
                                                 type="number"
-                                                label="Fr Etat General"
-                                                variant="outlined"
-                                                margin="normal"
-                                                style={{ marginLeft: '10px', marginRight: '10px' }}
-                                                fullWidth
-                                                value={formValues.frEtatGeneral !== null ? formValues.frEtatGeneral : ''}
-                                                onChange={(e) => {
-                                                    const newValue = e.target.value;
-                                                    setFormValues({ ...formValues, frEtatGeneral: newValue !== '' ? parseFloat(newValue) : null });
-                                                }}
-                                                onBlur={() => {
-                                                    const floatValue = parseFloat(formValues.frEtatGeneral);
-                                                    if (isNaN(floatValue)) {
-                                                        setFormValues({ ...formValues, frEtatGeneral: 0.0 });
-                                                    } else {
-                                                        setFormValues({ ...formValues, frEtatGeneral: floatValue });
-                                                    }
-                                                }}
-                                            />
-
-
-                                            <TextField
-                                                type="number"
-                                                label="Fc Etat General"
+                                                label="FC"
                                                 variant="outlined"
                                                 margin="normal"
                                                 style={{ marginLeft: '10px', marginRight: '10px' }}
@@ -1853,10 +1704,103 @@ const MultiStepForm = () => {
                                                 }}
                                             />
 
+                                        <TextField  
+                                                type="number"
+                                                label="TRC"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.trcEtatGeneral !== null ? formValues.trcEtatGeneral : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, trcEtatGeneral: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.trcEtatGeneral);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, trcEtatGeneral: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, trcEtatGeneral: floatValue });
+                                                    }
+                                                }}
+                                            />
+
 
                                             <TextField
                                                 type="number"
-                                                label="Temp Etat General"
+                                                label="TA"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.taEtatGeneral !== null ? formValues.taEtatGeneral : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, taEtatGeneral: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.taEtatGeneral);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, taEtatGeneral: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, taEtatGeneral: floatValue });
+                                                    }
+                                                }}
+                                            />
+
+
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                           
+
+
+                                           <TextField
+                                                type="number"
+                                                label="FR"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.frEtatGeneral !== null ? formValues.frEtatGeneral : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, frEtatGeneral: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.frEtatGeneral);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, frEtatGeneral: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, frEtatGeneral: floatValue });
+                                                    }
+                                                }}
+                                            />
+                                            <TextField
+                                                type="number"
+                                                label="SaO2"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.sa2 !== null ? formValues.sa2 : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, sa2: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.sa2);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, sa2: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, sa2: floatValue });
+                                                    }
+                                                }}
+                                            />
+
+                                            <TextField
+                                                type="number"
+                                                label="Température"
                                                 variant="outlined"
                                                 margin="normal"
                                                 style={{ marginLeft: '10px', marginRight: '10px' }}
@@ -1875,41 +1819,122 @@ const MultiStepForm = () => {
                                                     }
                                                 }}
                                             />
-
-
                                         </div>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                <TextField
+                                    type="number"
+                                    label="Poids à l'admission en Kg"
+                                    variant="outlined"
+                                    margin="normal"
+                                    style={{ marginLeft: '10px', marginRight: '10px' }}
+                                    fullWidth
+                                    value={formValues.poidsNaiss !== null ? formValues.poidsNaiss : ''}
+                                    onChange={(e) => {
+                                        const newValue = e.target.value;
+                                        setFormValues({ ...formValues, poidsNaiss: newValue !== '' ? parseFloat(newValue) : null });
+                                    }}
+                                    onBlur={() => {
+                                        const floatValue = parseFloat(formValues.poidsNaiss);
+                                        if (isNaN(floatValue)) {
+                                            setFormValues({ ...formValues, poidsNaiss: 0.0 });
+                                        } else {
+                                            setFormValues({ ...formValues, poidsNaiss: floatValue });
+                                        }
+                                    }}
+                                />
 
-                                        <div>
-                                            <FormControl component="fieldset">
-                                                <FormLabel component="legend">Aspects</FormLabel>
-                                                <RadioGroup
-                                                    row
-                                                    aria-label="Aspects"
-                                                    name="aspects"
-                                                    value={formValues.aspects ?? ''}
-                                                    onChange={(e) => setFormValues({ ...formValues, aspects: e.target.value })}
-                                                >
-                                                    <FormControlLabel value="Rose" control={<Radio />} label="Rose" />
-                                                    <FormControlLabel value="Cyanose " control={<Radio />} label="Cyanose" />
-                                                    <FormControlLabel value="Ictere" control={<Radio />} label="Ictere" />
-                                                    <FormControlLabel value="Paleur " control={<Radio />} label="Paleur" />
-                                                </RadioGroup>
-                                            </FormControl>
-                                        </div>
+
+
+
+                                <TextField
+                                    type="number"
+                                    label="Taille à l'admission en cm"
+                                    variant="outlined"
+                                    margin="normal"
+                                    style={{ marginLeft: '10px', marginRight: '10px' }}
+                                    fullWidth
+                                    value={formValues.tailleNaiss !== null ? formValues.tailleNaiss : ''}
+                                    onChange={(e) => {
+                                        const newValue = e.target.value;
+                                        setFormValues({ ...formValues, tailleNaiss: newValue !== '' ? parseFloat(newValue) : null });
+                                    }}
+                                    onBlur={() => {
+                                        const floatValue = parseFloat(formValues.tailleNaiss);
+                                        if (isNaN(floatValue)) {
+                                            setFormValues({ ...formValues, tailleNaiss: 0.0 });
+                                        } else {
+                                            setFormValues({ ...formValues, tailleNaiss: floatValue });
+                                        }
+                                    }}
+                                />
+
+
+                                <TextField
+                                    type="number"
+                                    label="PC à l'admission en cm "
+                                    variant="outlined"
+                                    margin="normal"
+                                    style={{ marginLeft: '10px', marginRight: '10px' }}
+                                    fullWidth
+                                    value={formValues.pcNaiss !== null ? formValues.pcNaiss : ''}
+                                    onChange={(e) => {
+                                        const newValue = e.target.value;
+                                        setFormValues({ ...formValues, pcNaiss: newValue !== '' ? parseFloat(newValue) : null });
+                                    }}
+                                    onBlur={() => {
+                                        const floatValue = parseFloat(formValues.pcNaiss);
+                                        if (isNaN(floatValue)) {
+                                            setFormValues({ ...formValues, pcNaiss: 0.0 });
+                                        } else {
+                                            setFormValues({ ...formValues, pcNaiss: floatValue });
+                                        }
+                                    }}
+                                />
+
+
+                            </div>
+
+
+                                       
+
+                            <div style={{ marginLeft: '10px' }}>
                                         <FormControl component="fieldset">
                                             <FormLabel component="legend">Organes genitaux externes</FormLabel>
                                             <RadioGroup
                                                 row
                                                 aria-label="organesGenitauxExternes"
-                                                name="organesGenitauxExternes"
-                                                value={formValues.organesGenitauxExternes ?? ''}
-                                                onChange={(e) => setFormValues({ ...formValues, organesGenitauxExternes: e.target.value })}
+                                                name="organs"
+                                                value={selectedOrgan}
+                                                onChange={handleOrganChange}
                                             >
-                                                <FormControlLabel value="Apparent" control={<Radio />} label="Apparent" />
-                                                <FormControlLabel value="Non apparent " control={<Radio />} label=" Non Apparent" />
+                                                 <FormControlLabel value="Morphotype féminin" control={<Radio />} label="Morphotype féminin" />
+                                                 <FormControlLabel value="Morphotype masculin" control={<Radio />} label="Morphotype masculin" />
+                                                 <FormControlLabel value="Indéterminé" control={<Radio />} label="Indéterminé" />
                                             </RadioGroup>
                                         </FormControl>
-                                    </div>
+                                    {selectedOrgan === 'Indéterminé' && (
+                                        <FormControl style={{ marginTop: '10px' }}>
+                                            <Select
+                                                labelId="prader-label"
+                                                id="prader"
+                                                name="prader"
+                                                value={selectedPrader}
+                                                onChange={handlePraderChange}
+                                                displayEmpty
+                                            >
+                                                <MenuItem value="" disabled>
+                                                    Choisissez une option PRADER
+                                                </MenuItem>
+                                                <MenuItem value="PRADER 1">PRADER 1</MenuItem>
+                                                <MenuItem value="PRADER 2">PRADER 2</MenuItem>
+                                                <MenuItem value="PRADER 3">PRADER 3</MenuItem>
+                                                <MenuItem value="PRADER 4">PRADER 4</MenuItem>
+                                                <MenuItem value="PRADER 5">PRADER 5</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    )}
+                            </div>
+                        </div>
                                     <div
                                         style={{
                                             border: '2px solid rgb(0,117,253)',

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cbe87759d7d070a47834a921ff124b6b",
+    "content-hash": "d6ef84ac30e054fcba45a55cdf12293a",
     "packages": [
         {
             "name": "api-platform/core",
@@ -5632,16 +5632,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.2.8",
+            "version": "v6.2.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "193e83bbd6617d6b2151c37fff10fa7168ebddef"
+                "reference": "d0a29e15c4225c128d8de89241f923345393c0cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/193e83bbd6617d6b2151c37fff10fa7168ebddef",
-                "reference": "193e83bbd6617d6b2151c37fff10fa7168ebddef",
+                "url": "https://api.github.com/repos/symfony/string/zipball/d0a29e15c4225c128d8de89241f923345393c0cf",
+                "reference": "d0a29e15c4225c128d8de89241f923345393c0cf",
                 "shasum": ""
             },
             "require": {
@@ -5698,7 +5698,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.2.8"
+                "source": "https://github.com/symfony/string/tree/v6.2.13"
             },
             "funding": [
                 {
@@ -5714,7 +5714,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-20T16:06:02+00:00"
+            "time": "2023-07-05T08:41:15+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -6708,5 +6708,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

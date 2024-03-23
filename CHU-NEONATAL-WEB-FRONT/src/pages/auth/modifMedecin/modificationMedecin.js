@@ -22,7 +22,7 @@ const ModificationPageMedecin = () => {
     const fetchRowData = async () => {
         try {
             // Effectuer la requête GET pour obtenir la ligne correspondante à l'aide de l'identifiant
-            const response = await axios.get(`https://localhost:4430/api/users/${id}`);
+            const response = await axios.get(` http://127.0.0.1:8000/api/users/${id}`);
             const row = response.data; // Supposons que la réponse contient les données de la ligne
 
             setRowData(row);
@@ -45,7 +45,7 @@ console.log(rowData);
 
     try {
       // Effectuer la requête PUT avec les données modifiées
-      await axios.put(`https://localhost:4430/api/users/${id}`, modifiedRowData);
+      await axios.put(`http://127.0.0.1:8000/api/users/${id}`, modifiedRowData);
   
       // Rediriger ou effectuer d'autres actions après la modification réussie
       // ...

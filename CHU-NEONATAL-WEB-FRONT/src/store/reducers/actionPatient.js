@@ -55,7 +55,7 @@ export const fetchPatients = () => {
     dispatch(fetchPatientsRequest());
     // Effectuer votre appel à l'API sans inclure le paramètre de page
     axios
-      .get('https://localhost:4430/api/matients', {
+      .get(' http://127.0.0.1:8000/api/matients', {
         headers: {
           'Accept': 'application/ld+json',
         },
@@ -97,7 +97,7 @@ export const updateMatient = (id, updatedData) => {
     dispatch(updateMatientRequest());
 
     axios
-      .put(`https://localhost:4430/api/matients/${id}`, updatedData)
+      .put(` http://127.0.0.1:8000/api/matients/${id}`, updatedData)
       .then((response) => {
         dispatch(updateMatientSuccess(response.data));
       })
