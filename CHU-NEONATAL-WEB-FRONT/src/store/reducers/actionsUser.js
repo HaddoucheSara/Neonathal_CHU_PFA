@@ -58,7 +58,7 @@ export const fetchUsers = () => {
     dispatch(fetchUsersRequest());
     // Effectuer votre appel à l'API sans inclure le paramètre de page
     axios
-      .get('https://localhost:4430/api/users', {
+      .get(' http://127.0.0.1:8000/api/users', {
         headers: {
           'Accept': 'application/ld+json',
         },
@@ -100,7 +100,7 @@ export const updateUser = (id, updatedData) => {
     dispatch(updateUserRequest());
 
     axios
-      .put(`https://localhost:4430/api/users/${id}`, updatedData)
+      .put(` http://127.0.0.1:8000/api/users/${id}`, updatedData)
       .then((response) => {
         dispatch(updateUserSuccess(response.data));
       })

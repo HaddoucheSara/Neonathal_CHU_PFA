@@ -26,7 +26,7 @@ const DashboardDefault = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('https://localhost:4430/api/matients')
+        fetch(' http://127.0.0.1:8000/api/matients')
             .then(response => response.json())
             .then(data => {
                 const patients = data['hydra:member'];

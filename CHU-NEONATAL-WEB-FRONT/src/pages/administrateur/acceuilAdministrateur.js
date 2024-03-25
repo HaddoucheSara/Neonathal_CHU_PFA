@@ -57,7 +57,7 @@ const TextFilter = ({ column }) => {
   const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://localhost:4430/api/users')
+        fetch(' http://127.0.0.1:8000/api/users')
           .then(response => response.json())
           .then(data => {
             const users = data['hydra:member'];
