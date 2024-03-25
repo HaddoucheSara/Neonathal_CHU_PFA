@@ -129,6 +129,7 @@ const MultiStepForm = () => {
         balancementsThoracoAbdominal: 0,
         entonnoirXyphoidien: 0,
         ceignementExpiratoire: 0,
+        silvermanScore: 0 ,
         dextro: 0.0,
         sa2: 0.0,
         frEtatGeneral: 0.0,
@@ -136,6 +137,20 @@ const MultiStepForm = () => {
         tempEtatGeneral: 0.0,
         poulsPeripheriques: '',
         organesGenitauxExternes: '',
+        taMIG:0.0,
+        taMID:0.0,
+        taMSG:0.0,
+        taMSD:0.0,
+        fcMIG:0.0,
+        fcMID:0.0,
+        fcMSG:0.0,
+        fcMSD:0.0,
+
+
+
+
+       
+      
 
         //************************4 eme partie du formulaire  ligne ****************************************
         conscienceExamNeurologique: '',
@@ -181,7 +196,8 @@ const MultiStepForm = () => {
         dateSurveillanceClinique:null,
         examenComplémentaireSurveillanceClinique: '',
         resultatSurveillanceClinique: '',
-        commentairesSurveillanceClinique: ''
+        commentairesSurveillanceClinique: '',
+       // Ajout de cette valeur pour stocker le score de Silverman
     });
 
     const handleNext = () => {
@@ -238,6 +254,33 @@ const MultiStepForm = () => {
     const handlePraderChange = (event) => {
         setSelectedPrader(event.target.value);
     };
+
+   
+    
+     // Fonction pour calculer le score de Silverman
+     const calculateSilvermanScore = () => {
+        let sum = 0;
+    
+        // Ajouter les valeurs de chaque champ au score de Silverman
+        sum += formValues.battementsDesAilesAuNez || 0;
+        sum += formValues.balancementsThoracoAbdominal || 0;
+        sum += formValues.tirageIntercostal || 0;
+        sum += formValues.entonnoirXyphoidien || 0;
+        sum += formValues.ceignementExpiratoire || 0;
+    
+        console.log("somme :", sum);
+        return sum;
+    };
+    
+    
+
+    const handleValueChange = (key, value) => {
+        setFormValues({ ...formValues, [key]: value });
+    };
+    React.useEffect(() => {
+        const score = calculateSilvermanScore();
+        setFormValues({ ...formValues, silvermanScore: score });
+    }, [formValues]);
 
 
     return (
@@ -1624,15 +1667,158 @@ const MultiStepForm = () => {
                 {activeStep === 2 && (
                     <div>
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px',  flexWrap: 'wrap',gap:"5px", }}>
+                            <div
+                                        style={{
+                                            border: '2px solid rgb(0,117,253)',
+                                            borderRadius: '8px',
+                                            padding: '10px',
+                                            position: 'relative',
+                                            marginTop: '10px',
+                                            flexBasis: '30%', flexGrow: 1 
+                                        }}
+                                    >
+                                        <h5
+                                            style={{
+                                                position: 'absolute',
+                                                top: '-30px',
+                                                left: '50%',
+                                                transform: 'translateX(-50%)',
+                                                backgroundColor: 'rgb(249,250,252)',
+                                                padding: '0 10px'
+                                            }}
+                                        >
+                                            Etat du nv né a la naissance
+                                        </h5>
+                                        <div>
+                                            <Typography variant="subtitle1" component="label" sx={{ fontWeight: 'bold', color: 'gray',marginLeft: '10px' }}>
+                                                Score APGAR:
+                                            </Typography>
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' ,marginTop: '10px',padding:'10px' }}>
+                                            <FormControl fullWidth variant="outlined" style={{  marginRight: '10px'}}>
+                                                <InputLabel style={{ marginTop: 'auto' }}>À la première minute </InputLabel>
+                                                <Select
+                                                    value={formValues.apgar1Min || 0}
+                                                    onChange={(e) => setFormValues({ ...formValues, apgar1Min: parseInt(e.target.value) })}
+                                                    label="Apres 1 min"
+                                                >
+                                                    <MenuItem value={0}>0</MenuItem>
+                                                    <MenuItem value={1}>1</MenuItem>
+                                                    <MenuItem value={2}>2</MenuItem>
+                                                    <MenuItem value={3}>3</MenuItem>
+                                                    <MenuItem value={4}>4</MenuItem>
+                                                    <MenuItem value={5}>5</MenuItem>
+                                                    <MenuItem value={6}>6</MenuItem>
+                                                    <MenuItem value={7}>7</MenuItem>
+                                                    <MenuItem value={8}>8</MenuItem>
+                                                    <MenuItem value={9}>9</MenuItem>
+                                                    <MenuItem value={10}>10</MenuItem>
+                                                </Select>
+
+                                            </FormControl>
+
+                                            <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px' }}>
+                                                <InputLabel style={{ marginTop: 'auto' }}>À la 5ème minute</InputLabel>
+                                                <Select
+                                                    value={formValues.apgar5Min || 0}
+                                                    onChange={(e) => setFormValues({ ...formValues, apgar5Min: parseInt(e.target.value) })}
+                                                    label="Apres 5 min"
+                                                >
+                                                    <MenuItem value={0}>0</MenuItem>
+                                                    <MenuItem value={1}>1</MenuItem>
+                                                    <MenuItem value={2}>2</MenuItem>
+                                                    <MenuItem value={3}>3</MenuItem>
+                                                    <MenuItem value={4}>4</MenuItem>
+                                                    <MenuItem value={5}>5</MenuItem>
+                                                    <MenuItem value={6}>6</MenuItem>
+                                                    <MenuItem value={7}>7</MenuItem>
+                                                    <MenuItem value={8}>8</MenuItem>
+                                                    <MenuItem value={9}>9</MenuItem>
+                                                    <MenuItem value={10}>10</MenuItem>
+                                                </Select>
+
+                                            </FormControl>
+
+                                            <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px' }}>
+                                                <InputLabel style={{ marginTop: 'auto' }}>À la 10ème minute</InputLabel>
+                                                <Select
+                                                    value={formValues.apgar10Min || 0}
+                                                    onChange={(e) => setFormValues({ ...formValues, apgar10Min: parseInt(e.target.value) })}
+                                                    label="Apres 10 min"
+                                                >
+                                                    <MenuItem value={0}>0</MenuItem>
+                                                    <MenuItem value={1}>1</MenuItem>
+                                                    <MenuItem value={2}>2</MenuItem>
+                                                    <MenuItem value={3}>3</MenuItem>
+                                                    <MenuItem value={4}>4</MenuItem>
+                                                    <MenuItem value={5}>5</MenuItem>
+                                                    <MenuItem value={6}>6</MenuItem>
+                                                    <MenuItem value={7}>7</MenuItem>
+                                                    <MenuItem value={8}>8</MenuItem>
+                                                    <MenuItem value={9}>9</MenuItem>
+                                                    <MenuItem value={10}>10</MenuItem>
+                                                </Select>
+
+                                            </FormControl>
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+                                               <InputLabel style={{ marginTop: 'auto' }}>CRI</InputLabel>
+                                               <Select
+                                                     value={formValues.criEnfant ?? ''}
+                                                     onChange={(e) => setFormValues({ ...formValues, criEnfant: e.target.value })}
+                                                     label="CRI"
+                                                >
+                                                    <MenuItem value="immédiat">Immédiat</MenuItem>
+                                                    <MenuItem value="retardé">Retardé</MenuItem>
+                                               </Select>
+                                        </FormControl>
+                                        <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+                                                <InputLabel style={{ marginTop: 'auto' }}>Coloration</InputLabel>
+                                                <Select
+                                                    value={formValues.colorationEnfant ?? ''}
+                                                    onChange={(e) => setFormValues({ ...formValues, colorationEnfant: e.target.value })}
+                                                    label="Coloration"
+                                                >
+                                                   <MenuItem value="rose">Rose</MenuItem>
+                                                   <MenuItem value="cyanosé">Cyanosé</MenuItem>
+                                                   <MenuItem value="roseCyanosé">Rose avec extrémités cyanosées</MenuItem>
+                                                 </Select>
+                                        </FormControl>
+
+
+                                        </div>
+
+                                        <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+                                                <InputLabel style={{ marginTop: 'auto' }}>Réanimation</InputLabel>
+                                                <Select
+                                                    value={formValues.reanimationEnfant ?? ''}
+                                                    onChange={(e) => setFormValues({ ...formValues, reanimationEnfant: e.target.value })}
+                                                    label="Réanimation"
+                                                    style={{ marginRight: '20px' }}
+                                                   
+                                                 >
+                                                     <MenuItem value="oxygénothérapieEnLunette">Oxygénothérapie en lunette</MenuItem>
+                                                     <MenuItem value="ventilationAuMasque">Ventilation au masque</MenuItem>
+                                                     <MenuItem value="mce">MCE</MenuItem>
+                                                     <MenuItem value="intubationAdrénaline">Intubation adrénaline</MenuItem>
+                                                     <MenuItem value="adrénalineIV">Adrénaline IV</MenuItem>
+                                                     <MenuItem value="remplissage">Remplissage</MenuItem>
+                                                </Select>
+                                        </FormControl>
+
+                                    </div>
                                 <div
                                     style={{
                                         display: 'flex',
                                         flexDirection: 'column',
                                         justifyContent: 'space-between',
-
+                                        marginTop:'10px',
                                         position: 'relative',
-                                        width: 'calc(50% - 10px)'
+                                        width: 'calc(50% - 10px)',
+                                        flexBasis: '30%', flexGrow: 1
+                                        
                                     }}
                                 >
                                     <div
@@ -1640,7 +1826,8 @@ const MultiStepForm = () => {
                                             border: '2px solid rgb(0,117,253)',
                                             borderRadius: '8px',
                                             padding: '10px',
-                                            position: 'relative'
+                                            position: 'relative',
+                                           
                                         }}
                                     >
                                         <h5
@@ -1659,7 +1846,7 @@ const MultiStepForm = () => {
                                         <div style={{ marginLeft: '10px' }}>
                                          
                                             <FormControl component="fieldset">
-                                                <FormLabel component="legend">Aspect</FormLabel>
+                                                <FormLabel component="legend" style={{ marginBottom: '6px' }} >Aspect</FormLabel>
                                                 <InputLabel id="aspects-label" style={{ marginBottom: '5px' }}>Choisir un aspect</InputLabel>
                                                 <Select 
                                                      
@@ -1821,27 +2008,27 @@ const MultiStepForm = () => {
                                             />
                                         </div>
                                         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <TextField
-                                    type="number"
-                                    label="Poids à l'admission en Kg"
-                                    variant="outlined"
-                                    margin="normal"
-                                    style={{ marginLeft: '10px', marginRight: '10px' }}
-                                    fullWidth
-                                    value={formValues.poidsNaiss !== null ? formValues.poidsNaiss : ''}
-                                    onChange={(e) => {
-                                        const newValue = e.target.value;
-                                        setFormValues({ ...formValues, poidsNaiss: newValue !== '' ? parseFloat(newValue) : null });
-                                    }}
-                                    onBlur={() => {
-                                        const floatValue = parseFloat(formValues.poidsNaiss);
-                                        if (isNaN(floatValue)) {
-                                            setFormValues({ ...formValues, poidsNaiss: 0.0 });
-                                        } else {
-                                            setFormValues({ ...formValues, poidsNaiss: floatValue });
-                                        }
-                                    }}
-                                />
+                                            <TextField
+                                                type="number"
+                                                label="Poids à l'admission en Kg"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.poidsNaiss !== null ? formValues.poidsNaiss : ''}
+                                                onChange={(e) => {
+                                                const newValue = e.target.value;
+                                                setFormValues({ ...formValues, poidsNaiss: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                               onBlur={() => {
+                                               const floatValue = parseFloat(formValues.poidsNaiss);
+                                               if (isNaN(floatValue)) {
+                                               setFormValues({ ...formValues, poidsNaiss: 0.0 });
+                                               } else {
+                                               setFormValues({ ...formValues, poidsNaiss: floatValue });
+                                               }
+                                               }}
+                                            />
 
 
 
@@ -1935,60 +2122,19 @@ const MultiStepForm = () => {
                                     )}
                             </div>
                         </div>
-                                    <div
-                                        style={{
-                                            border: '2px solid rgb(0,117,253)',
-                                            borderRadius: '8px',
-                                            padding: '10px',
-                                            position: 'relative',
-                                            marginTop: '10px'
-                                        }}
-                                    >
-                                        <h5
-                                            style={{
-                                                position: 'absolute',
-                                                top: '-30px',
-                                                left: '50%',
-                                                transform: 'translateX(-50%)',
-                                                backgroundColor: 'rgb(249,250,252)',
-                                                padding: '0 10px'
-                                            }}
-                                        >
-                                            Examen cardio-vasculaire
-                                        </h5>
-
-                                        <FormControl component="fieldset">
-                                            <FormLabel component="legend">Pouls Peripheriques (Femoraux)</FormLabel>
-                                            <RadioGroup
-                                                row
-                                                aria-label="poulsPeripheriques"
-                                                name="poulsPeripheriques"
-                                                value={formValues.poulsPeripheriques ?? ''}
-                                                onChange={(e) => setFormValues({ ...formValues, poulsPeripheriques: e.target.value })}
-                                            >
-                                                <FormControlLabel value="Percs" control={<Radio />} label="Percus" />
-                                                <FormControlLabel value="Non percus" control={<Radio />} label="Non percus" />
-                                            </RadioGroup>
-                                        </FormControl>
-                                        <TextField
-                                            label="Auscultation"
-                                            variant="outlined"
-                                            margin="normal"
-                                            style={{ marginLeft: '10px', marginRight: '10px' }}
-
-                                            fullWidth
-                                            value={formValues.auscultation ?? ''}
-                                            onChange={(e) => setFormValues({ ...formValues, auscultation: e.target.value })}
-                                        />
-                                    </div>
-                                </div>
-                                <div
+                                    
+                    </div>
+                    <div
                                     style={{
                                         border: '2px solid rgb(0,117,253)',
                                         borderRadius: '8px',
                                         padding: '10px',
                                         position: 'relative',
-                                        width: 'calc(50% - 10px)'
+                                        width: 'calc(50% - 10px)',
+                                        
+                                       
+                                        
+                                        
                                     }}
                                 >
                                     <h5
@@ -2003,12 +2149,14 @@ const MultiStepForm = () => {
                                     >
                                         Examen Pleuro-Pulmonaire
                                     </h5>
+                                    <FormLabel component="legend" style={{ marginTop: '10px', marginBottom: '7px', marginLeft: '10px' }}>Score de Silverman: {formValues.silvermanScore}</FormLabel>
                                     <div>
-                                        <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px' }}>
+                                    
+                                        <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px',marginTop:'5px' }}>
                                             <InputLabel style={{ marginTop: 'auto' }}>BATTEMENTS DES AILES AU NEZ</InputLabel>
                                             <Select
-                                                value={formValues.battementsDesAilesAuNez || 0}
-                                                onChange={(e) => setFormValues({ ...formValues, battementsDesAilesAuNez:parseInt(e.target.value)  })}
+                                                value={formValues.battementsDesAilesAuNez}
+                                                onChange={(e) => handleValueChange('battementsDesAilesAuNez', e.target.value)}
                                                 label="BATTEMENTS DES AILES AU NEZ"
                                             >
                                                 <MenuItem value={0}>0</MenuItem>
@@ -2022,10 +2170,9 @@ const MultiStepForm = () => {
                                         <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px' }}>
                                             <InputLabel style={{ marginTop: 'auto' }}>BALANCEMENT THORACO-ABDOMINAL</InputLabel>
                                             <Select
-                                                value={formValues.balancementsThoracoAbdominal || 0}
-                                                onChange={(e) =>
-                                                    setFormValues({ ...formValues, balancementsThoracoAbdominal:parseInt(e.target.value)  })
-                                                }
+                                                value={formValues.balancementsThoracoAbdominal}
+                                                onChange={(e) => handleValueChange('balancementsThoracoAbdominal', e.target.value)}
+                                                
                                                 label="BALANCEMENT THORACO-ABDOMINAL"
                                             >
                                                 <MenuItem value={0}>0</MenuItem>
@@ -2039,8 +2186,8 @@ const MultiStepForm = () => {
                                         <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px' }}>
                                             <InputLabel style={{ marginTop: 'auto' }}>TIRAGE INTERCOSTAL</InputLabel>
                                             <Select
-                                                value={formValues.tirageIntercostal || 0}
-                                                onChange={(e) => setFormValues({ ...formValues, tirageIntercostal:parseInt(e.target.value)  })}
+                                                value={formValues.tirageIntercostal}
+                                                onChange={(e) => handleValueChange('tirageIntercostal', e.target.value)}
                                                 label="TIRAGE INTERCOSTAL"
                                             >
                                                 <MenuItem value={0}>0</MenuItem>
@@ -2054,8 +2201,8 @@ const MultiStepForm = () => {
                                         <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px' }}>
                                             <InputLabel style={{ marginTop: 'auto' }}>ENTONNOIR XYPHOIDIEN</InputLabel>
                                             <Select
-                                                value={formValues.entonnoirXyphoidien || 0}
-                                                onChange={(e) => setFormValues({ ...formValues, entonnoirXyphoidien:parseInt(e.target.value)  })}
+                                                value={formValues.entonnoirXyphoidien}
+                                                onChange={(e) => handleValueChange('entonnoirXyphoidien', e.target.value)}
                                                 label="ENTONNOIR XYPHOIDIEN"
                                             >
                                                 <MenuItem value={0}>0</MenuItem>
@@ -2069,8 +2216,8 @@ const MultiStepForm = () => {
                                         <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px' }}>
                                             <InputLabel style={{ marginTop: 'auto' }}>CEIGNEMENT EXPIRATOIRE</InputLabel>
                                             <Select
-                                                value={formValues.ceignementExpiratoire || 0}
-                                                onChange={(e) => setFormValues({ ...formValues, ceignementExpiratoire:parseInt(e.target.value)  })}
+                                                value={formValues.ceignementExpiratoire}
+                                                onChange={(e) => handleValueChange('ceignementExpiratoire', e.target.value)}
                                                 label="CEIGNEMENT EXPIRATOIRE"
                                             >
                                                 <MenuItem value={0}>0</MenuItem>
@@ -2080,7 +2227,442 @@ const MultiStepForm = () => {
                                         </FormControl>
                                     </div>
                                     <br />
+                                    <FormLabel component="legend" style={{marginBottom: '7px', marginLeft: '10px' }}>Morphologie du thorax</FormLabel>
+                                    <div>
+                                       <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+                                            <InputLabel style={{ marginTop: 'auto' }}>Morphologie du thorax</InputLabel>
+                                            <Select
+                                                value={formValues.morphologieThorax}
+                                                onChange={(e) => handleValueChange('morphologieThorax', e.target.value)}
+                                                label="Morphologie du thorax"
+                                            >
+                                                <MenuItem value="normal">Normal</MenuItem>
+                                                <MenuItem value="anormal">Anormal</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                        {formValues.morphologieThorax === 'anormal' && (
+                                         <TextField
+                                             label="Détails de la morphologie du thorax"
+                                             value={formValues.morphologieThoraxDetails}
+                                             onChange={(e) => handleValueChange('morphologieThoraxDetails', e.target.value)}
+                                             fullWidth
+                                             variant="outlined"
+                                             style={{ margin: '10px' }}
+                                         />
+                                        )} 
+                                    </div>
+                                    <br />
+                                    <FormLabel component="legend" style={{marginBottom: '7px', marginLeft: '10px' }}>Auscultation</FormLabel>
+                                    <div>
+                                   
+                                        <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+                                           <InputLabel style={{ marginTop: 'auto' }}>Auscultation</InputLabel>
+                                           <Select value={formValues.auscultation}
+                                                   onChange={(e) => handleValueChange('auscultation', e.target.value)}
+                                                   label="Auscultation">
+                                            <MenuItem value="normal">Normal</MenuItem>
+                                            <MenuItem value="anormal">Anormal</MenuItem>
+                                            </Select>  
+                                        </FormControl>
+                                        {formValues.auscultation === 'anormal' && (
+                                         <TextField
+                                            label="Détails de l'auscultation"
+                                            value={formValues.auscultationDetails}
+                                            onChange={(e) => handleValueChange('auscultationDetails', e.target.value)}
+                                            fullWidth
+                                            variant="outlined"
+                                            style={{ margin: '10px' }}
+                                         />
+                                         )}
+                                    </div>
+
+                                   
                                 </div>
+<div
+    style={{
+        border: '2px solid rgb(0,117,253)',
+        borderRadius: '8px',
+        padding: '10px',
+        position: 'relative',
+        marginLeft: '7px',
+        flexBasis: '30%', flexGrow: 1
+    }}
+>
+    <h5
+        style={{
+            position: 'absolute',
+            top: '-30px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            backgroundColor: 'rgb(249,250,252)',
+            padding: '0 10px'
+        }}
+    >
+        Bilan malformatif 
+    </h5>
+
+    <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px' }}>
+        <InputLabel style={{ marginTop: 'auto' }}>Atrésie de l’œsophage</InputLabel>
+        <Select
+            value={formValues.atresieOesophage || ''}
+            onChange={(e) => setFormValues({ ...formValues, atresieOesophage: e.target.value })}
+            label="Atrésie de l’œsophage"
+        >
+            <MenuItem value="positif">Positif</MenuItem>
+            <MenuItem value="negatif">Négatif</MenuItem>
+        </Select>
+    </FormControl>
+
+    <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+        <InputLabel style={{ marginTop: 'auto' }}>Fente labio-palatine</InputLabel>
+        <Select
+            value={formValues.fenteLabioPalatine || ''}
+            onChange={(e) => setFormValues({ ...formValues, fenteLabioPalatine: e.target.value })}
+            label="Fente labio-palatine"
+        >
+            <MenuItem value="labiale">Labiale</MenuItem>
+            <MenuItem value="palatine">Palatine</MenuItem>
+            <MenuItem value="labioPalatine">Labio-palatine</MenuItem>
+            <MenuItem value="absente">Absente</MenuItem>
+        </Select>
+    </FormControl>
+
+    <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+        <InputLabel style={{ marginTop: 'auto' }}>Atrésie des choanes</InputLabel>
+        <Select
+            value={formValues.atresieChoanes || ''}
+            onChange={(e) => setFormValues({ ...formValues, atresieChoanes: e.target.value })}
+            label="Atrésie des choanes"
+        >
+            <MenuItem value="unilateraleGaucheOsseuse">Atrésie unilatérale gauche osseuse</MenuItem>
+            <MenuItem value="unilateraleDroiteOsseuse">Atrésie unilatérale droite osseuse</MenuItem>
+            <MenuItem value="unilateraleGaucheMembraneuse">Atrésie unilatérale gauche membraneuse</MenuItem>
+            <MenuItem value="unilateraleDroiteMembraneuse">Atrésie unilatérale droite membraneuse</MenuItem>
+            <MenuItem value="bilateraleMembraneuse">Atrésie bilatérale membraneuse</MenuItem>
+            <MenuItem value="bilateraleOsseuse">Atrésie bilatérale osseuse</MenuItem>
+            <MenuItem value="absente">Absente</MenuItem>
+        </Select>
+    </FormControl>
+
+    <TextField
+        label="Autres anomalies ou malformations Oro-faciales"
+        variant="outlined"
+        margin="normal"
+        style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}
+        fullWidth
+        multiline
+        rows={2}
+        value={formValues.autresAnomalies || ''}
+        onChange={(e) => setFormValues({ ...formValues, autresAnomalies: e.target.value })}
+    />
+
+    <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+        <InputLabel style={{ marginTop: 'auto' }}>Anomalies orthopédiques</InputLabel>
+        <Select
+            value={formValues.anomaliesOrthopediques || ''}
+            onChange={(e) => setFormValues({ ...formValues, anomaliesOrthopediques: e.target.value })}
+            label="Anomalies orthopédiques"
+        >
+            <MenuItem value="LCH">LCH</MenuItem>
+            <MenuItem value="PiedBots">Pied bots</MenuItem>
+            <MenuItem value="PiedsTalus">Pieds talus</MenuItem>
+            <MenuItem value="PiedsValgus">Pieds valgus</MenuItem>
+            <MenuItem value="PiedsBotsVatusEquin">Pieds bots vatus équin</MenuItem>
+            <MenuItem value="DoigtsSurnumeraires">Doigts surnuméraires</MenuItem>
+            <MenuItem value="Absente">Absente</MenuItem>
+        </Select>
+    </FormControl>
+
+    <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+        <InputLabel style={{ marginTop: 'auto' }}>Anomalies de la paroi abdominale</InputLabel>
+        <Select
+            value={formValues.anomaliesParoiAbdominale || ''}
+            onChange={(e) => setFormValues({ ...formValues, anomaliesParoiAbdominale: e.target.value })}
+            label="Anomalies de la paroi abdominale"
+        >
+            <MenuItem value="Omphalocele">Omphalocèle</MenuItem>
+            <MenuItem value="Laparoschisis">Laparoschisis</MenuItem>
+            <MenuItem value="Absente">Absente</MenuItem>
+        </Select>
+    </FormControl>
+    <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+        <InputLabel style={{ marginTop: 'auto' }}>Anomalies de fermeture du tube neurale</InputLabel>
+        <Select
+             value={formValues.anomaliesTubeNeurale || ''}
+             onChange={(e) => setFormValues({ ...formValues, anomaliesTubeNeurale: e.target.value })}
+             label="Anomalies de fermeture du tube neurale"
+        >
+             <MenuItem value="Anencéphalie">Anencéphalie</MenuItem>
+             <MenuItem value="Spina bifida">Spina bifida</MenuItem>
+             <MenuItem value="Myéloméningocèle">Myéloméningocèle</MenuItem>
+             <MenuItem value="Touffe de poids">Touffe de poids</MenuItem>
+             <MenuItem value="Encéphalocèle">Encéphalocèle</MenuItem>
+       
+         </Select>
+    </FormControl>
+
+
+    <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+        <InputLabel style={{ marginTop: 'auto' }}>Craniostenose</InputLabel>
+        <Select
+             value={formValues.craniostenose || ''}
+             onChange={(e) => setFormValues({ ...formValues, craniostenose: e.target.value })}
+             label="Craniostenose"
+        >
+            <MenuItem value="Oui">Oui</MenuItem>
+            <MenuItem value="Non">Non</MenuItem>
+        </Select>
+    </FormControl>
+
+    <TextField
+        label="Autres anomalies"
+        variant="outlined"
+        margin="normal"
+        style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}
+        fullWidth
+        multiline
+        rows={2}
+        value={formValues.autresAnomaliesAutres || ''}
+        onChange={(e) => setFormValues({ ...formValues, autresAnomaliesAutres: e.target.value })}
+    />
+</div>
+
+
+                                    <div
+                                        style={{
+                                            border: '2px solid rgb(0,117,253)',
+                                            borderRadius: '8px',
+                                            padding: '10px',
+                                            position: 'relative',
+                                            marginTop: '10px',
+                                            width:'100%'
+                                        }}
+                                    >
+                                        <h5
+                                            style={{
+                                                position: 'absolute',
+                                                top: '-30px',
+                                                left: '50%',
+                                                transform: 'translateX(-50%)',
+                                                backgroundColor: 'rgb(249,250,252)',
+                                                padding: '0 10px'
+                                            }}
+                                        >
+                                            Examen cardio-vasculaire
+                                        </h5>
+                                        <TextField
+                                            label="Auscultation"
+                                            variant="outlined"
+                                            margin="normal"
+                                            style={{ marginLeft: '10px', marginRight: '10px' }}
+
+                                            fullWidth
+                                            value={formValues.auscultation ?? ''}
+                                            onChange={(e) => setFormValues({ ...formValues, auscultation: e.target.value })}
+                                        />
+
+                                       <FormControl fullWidth variant="outlined" style={{ marginLeft: '10px', marginRight: '10px', marginTop: '5px' }}>
+                                           <InputLabel style={{ marginTop: 'auto' }}>Pouls périphériques</InputLabel>
+                                           <Select value={formValues.poulsPeripheriques}
+                                                   onChange={(e) => handleValueChange('poulsPeripheriques', e.target.value)}
+                                                   label="poulsPeripheriques">
+                                            <MenuItem value="Percus">Percus</MenuItem>
+                                            <MenuItem value="Non percus">Non percus</MenuItem>
+                                            </Select>  
+                                        </FormControl>
+                                        
+                                           
+
+                                           <div  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                           <TextField
+                                                type="number"
+                                                label="TA MIG"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.taMIG !== null ? formValues.taMIG : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, taMIG: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.taMIG);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, taMIG: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, taMIG: floatValue });
+                                                    }
+                                                }}
+                                            />
+                                            <TextField
+                                                type="number"
+                                                label="TA MID"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.taMID !== null ? formValues.taMID : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, taMID: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.taMID);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, taMID: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, taMID: floatValue });
+                                                    }
+                                                }}
+                                            />
+                                            </div>
+                                            <div  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <TextField
+                                                type="number"
+                                                label="TA MSG"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.taMSG !== null ? formValues.taMSG : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, taMSG: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.taMSG);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, taMSG: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, taMSG: floatValue });
+                                                    }
+                                                }}
+                                            />
+                                            <TextField
+                                                type="number"
+                                                label="TA MSD"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.taMSD !== null ? formValues.taMSD : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, taMSD: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.taMSD);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, taMSD: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, taMSD: floatValue });
+                                                    }
+                                                }}
+                                            />
+                                            </div>
+                                            <div  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <TextField
+                                                type="number"
+                                                label="FC MIG"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.fcMIG !== null ? formValues.fcMIG : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, fcMIG: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.fcMIG);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, fcMIG: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, fcMIG: floatValue });
+                                                    }
+                                                }}
+                                            />
+                                            <TextField
+                                                type="number"
+                                                label="FC MID"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.fcMID !== null ? formValues.fcMID : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, fcMID: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.fcMID);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, fcMID: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, fcMID: floatValue });
+                                                    }
+                                                }}
+                                            />
+                                            </div>
+                                            <div  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                            <TextField
+                                                type="number"
+                                                label="FC MSG"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.fcMSG !== null ? formValues.fcMSG : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, fcMSG: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.fcMSG);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, fcMSG: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, fcMSG: floatValue });
+                                                    }
+                                                }}
+                                            />
+                                            <TextField
+                                                type="number"
+                                                label="FC MSD"
+                                                variant="outlined"
+                                                margin="normal"
+                                                style={{ marginLeft: '10px', marginRight: '10px' }}
+                                                fullWidth
+                                                value={formValues.fcMSD !== null ? formValues.fcMSD : ''}
+                                                onChange={(e) => {
+                                                    const newValue = e.target.value;
+                                                    setFormValues({ ...formValues, fcMSD: newValue !== '' ? parseFloat(newValue) : null });
+                                                }}
+                                                onBlur={() => {
+                                                    const floatValue = parseFloat(formValues.fcMSD);
+                                                    if (isNaN(floatValue)) {
+                                                        setFormValues({ ...formValues, fcMSD: 0.0 });
+                                                    } else {
+                                                        setFormValues({ ...formValues, fcMSD: floatValue });
+                                                    }
+                                                }}
+                                            />
+                                            </div>
+
+                                        
+                                        
+    
+    
+                       
+                                    </div>
+                              
+
+                               
+                                
+                                
+
+                                    
                             </div>
                         </div>
                     </div>
